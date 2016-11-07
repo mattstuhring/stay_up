@@ -8,12 +8,23 @@
   CategoryCTRL.$inject = ['CategorySVC'];
 
   function CategoryCTRL(CategorySVC) {
-    this.catList = [];
+    this.firstList = [];
+    this.secondList = [];
+
+    this.getSub = (category) => {
+      CategorySVC.getSubCategories(category)
+        .then((subs) => {
+          this.secondList = subs;
+        })
+        .catch((err) => {
+          throw err;
+        })
+    }
 
     const activate = () => {
       CategorySVC.getCategories()
         .then((categories) => {
-          this.catList = categories;
+          this.firstList = categories;
         })
         .catch((err) => {
           throw err;

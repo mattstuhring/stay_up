@@ -1,15 +1,38 @@
 <div class="container">
   <div class="row">
 
-    <div class="col-md-4" ng-controller="CategoryCTRL as cat">
-      <ul class="list-group">
-        <button type="button" class="list-group-item" ng-repeat="c in cat.catList">
-          {{ c.name }}
-        </button>
-      </ul>
+    <!-- <div class="col-md-3" ng-controller="CategoryCTRL as cat">
+      <uib-accordion>
+        <div uib-accordion-group class="panel-default" heading="{{ c.name }}" ng-repeat="c in cat.firstList" ng-click="cat.getSub(c.id)">
+          <div class="panel-default" ng-repeat="s in cat.secondList"><a href="#/">{{ s.name }}</a></div>
+        </div>
+      </uib-accordion>
+    </div> -->
+
+
+
+    <div class="col-md-3" ng-controller="CategoryCTRL as cat">
+      <uib-accordion>
+        <div uib-accordion-group class="panel-default" is-open="status.open" ng-repeat="c in cat.firstList" ng-click="cat.getSub(c.id)">
+          <uib-accordion-heading>
+            {{ c.name }}
+            <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+          </uib-accordion-heading>
+          <div class="panel-default" ng-repeat="s in cat.secondList">
+            <a href="#/">{{ s.name }}</a>
+          </div>
+        </div>
+      </uib-accordion>
     </div>
 
-    <div class="col-md-8">
+
+
+
+
+
+
+
+    <div class="col-md-9">
       <div class="row">
         <div class="col-md-4">
           <div class="thumbnail">
