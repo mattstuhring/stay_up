@@ -1,3 +1,6 @@
-'use strict';
+(function() {
+  'use strict';
 
-const myApp = angular.module('myApp', []);
+  angular.module('stayup', ['ngRoute']);
+
+}());
