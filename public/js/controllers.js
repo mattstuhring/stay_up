@@ -10,6 +10,7 @@
   function CategoryCTRL(CategorySVC) {
     this.firstList = [];
     this.secondList = [];
+    this.products = [];
 
     this.getSub = (category) => {
       CategorySVC.getSubCategories(category)
@@ -18,7 +19,7 @@
         })
         .catch((err) => {
           throw err;
-        })
+        });
     }
 
     const activate = () => {
@@ -31,7 +32,18 @@
         });
     };
 
+    const initialProducts = () => {
+      CategorySVC.getInitialProducts()
+        .then((res) => {
+          this.products = res;
+        })
+        .catch((err) => {
+          throw err;
+        });
+    };
+
     activate();
+    initialProducts();
   }
 
 }());

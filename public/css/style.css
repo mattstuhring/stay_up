@@ -1,0 +1,24 @@
+.text-wrap {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.thumbnailBox {
+
+}
+
+img {
+  padding-right: 10px;
+}
+
+.thumbnailBox {
+  width: 189.38px;
+  height: 220px;
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: flex-start;
+  align-items: center;
+}
