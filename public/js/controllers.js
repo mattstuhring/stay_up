@@ -11,16 +11,23 @@
     this.firstList = [];
     this.secondList = [];
     this.products = [];
+    this.categoryProducts = [];
 
     this.getSub = (category) => {
       CategorySVC.getSubCategories(category)
-        .then((subs) => {
-          this.secondList = subs;
+        .then((res) => {
+          console.log('what is this', res);
+          this.secondList = res.names;
+          this.categoryProducts = res.list;
         })
         .catch((err) => {
           throw err;
         });
     }
+
+    // this.getCategoryProducts = () => {
+    //   CategorySVC.
+    // }
 
     const activate = () => {
       CategorySVC.getCategories()
