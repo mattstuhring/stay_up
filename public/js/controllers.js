@@ -5,9 +5,9 @@
 
   app.controller('CategoryCTRL', CategoryCTRL);
 
-  CategoryCTRL.$inject = ['CategorySVC'];
+  CategoryCTRL.$inject = ['$location', '$routeParams', 'CategorySVC'];
 
-  function CategoryCTRL(CategorySVC) {
+  function CategoryCTRL($location, $routeParams, CategorySVC) {
     this.firstList = [];
     this.secondList = [];
     this.products = [];
@@ -16,18 +16,25 @@
     this.getSub = (category) => {
       CategorySVC.getSubCategories(category)
         .then((res) => {
-          console.log('what is this', res);
           this.secondList = res.names;
-          this.categoryProducts = res.list;
+          this.products = res.list;
+          // $location.path('/product');
         })
         .catch((err) => {
           throw err;
         });
-    }
+    };
 
-    // this.getCategoryProducts = () => {
-    //   CategorySVC.
-    // }
+    this.getSubProd = (category) => {
+      CategorySVC.getSubProducts(category)
+        .then((res) => {
+          console.log('get sub prod res', res);
+          this.products = res;
+        })
+        .catch((err) => {
+          throw err;
+        });
+    };
 
     const activate = () => {
       CategorySVC.getCategories()
