@@ -3,26 +3,55 @@
 
     <!-- Side Nav Accordian -->
     <div class="col-md-3">
-      <uib-accordion>
-        <div uib-accordion-group class="panel-default" is-open="status.open" ng-repeat="c in cat.firstList">
-          <uib-accordion-heading>
-            <a href="" ng-click="cat.getSub(c.id)">
-              {{ c.name }}
-              <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
-            </a>
-          </uib-accordion-heading>
-          <div class="panel-default" ng-repeat="s in cat.secondList">
-            <a href="" ng-click="cat.getSubProd(s.id)">
-              {{ s.name }}
-            </a>
+      <div class="row">
+        <div class="col-md-12 col-centered">
+          <h4 class="text-center">Category Name</h4>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 col-centered">
+          <div class="btn-group btn-group-s btn-group-justified btn-center">
+            <label class="btn btn-primary" ng-model="radioModel" uib-btn-radio="'Left'">$ High</label>
+            <label class="btn btn-primary" ng-model="radioModel" uib-btn-radio="'Middle'">$ Low</label>
+            <label class="btn btn-primary" ng-model="radioModel" uib-btn-radio="'Right'">Popular</label>
           </div>
         </div>
-      </uib-accordion>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <uib-accordion>
+            <div uib-accordion-group class="panel-default" is-open="status.open" ng-repeat="c in cat.firstList">
+              <uib-accordion-heading>
+                <a href="" ng-click="cat.getSub(c.id)">
+                  {{ c.name }}
+                  <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+                </a>
+              </uib-accordion-heading>
+              <div class="panel-default" ng-repeat="s in cat.secondList">
+                <a href="" ng-click="cat.getSubProd(s.id)">
+                  {{ s.name }}
+                </a>
+              </div>
+            </div>
+          </uib-accordion>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="input-group">
+            <span class="input-group-btn">
+              <button class="btn btn-primary" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+            </span>
+            <input type="text" class="form-control" placeholder="Search for...">
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Display Products -->
     <div class="col-md-9">
       <div class="row">
+
         <!-- Product thumbnail -->
         <div class="col-md-3" ng-repeat="p in cat.productsList">
           <div class="thumbnail">
@@ -38,10 +67,12 @@
             </div>
           </div>
         </div>
-        <div class"row">
-          <div class="offset-md-6">
-            <a href="" class="text-center" ng-click="cat.loadMore(cat.categoryId)">Load More</a>
-          </div>
+      </div>
+      <div class"row">
+        <div class="col-md-2 col-centered">
+          <p class="text-center">
+            <a href="" ng-click="cat.loadMore(cat.categoryId)">Load More</a>
+          </p>
         </div>
       </div>
     </div>
