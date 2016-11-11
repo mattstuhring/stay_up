@@ -5,20 +5,21 @@
 
   app.controller('CategoryCTRL', CategoryCTRL);
 
-  CategoryCTRL.$inject = ['$location', '$routeParams', 'CategorySVC'];
+  CategoryCTRL.$inject = ['$scope', '$window', 'CategorySVC'];
 
-  function CategoryCTRL($location, $routeParams, CategorySVC) {
+  function CategoryCTRL($scope, $window, CategorySVC) {
     this.firstList = [];
     this.secondList = [];
-    this.products = [];
+    this.productsList = [];
     this.categoryProducts = [];
+    this.categoryId = '';
 
     this.getSub = (category) => {
       CategorySVC.getSubCategories(category)
         .then((res) => {
           this.secondList = res.names;
-          this.products = res.list;
-          // $location.path('/product');
+          this.productsList = res.list;
+          this.categoryId = res.id;
         })
         .catch((err) => {
           throw err;
@@ -28,8 +29,8 @@
     this.getSubProd = (category) => {
       CategorySVC.getSubProducts(category)
         .then((res) => {
-          console.log('get sub prod res', res);
-          this.products = res;
+          this.productsList = res.products;
+          this.categoryId = res.metadata.category.id;
         })
         .catch((err) => {
           throw err;
@@ -49,7 +50,8 @@
     const initialProducts = () => {
       CategorySVC.getInitialProducts()
         .then((res) => {
-          this.products = res;
+          this.categoryId = res.metadata.category.id;
+          this.productsList = res.products;
         })
         .catch((err) => {
           throw err;
@@ -58,6 +60,24 @@
 
     activate();
     initialProducts();
-  }
 
+
+    $scope.offset = 0;
+
+    this.loadMore = (id) => {
+      $scope.offset += 48;
+
+      CategorySVC.getMoreProducts($scope.offset, id)
+        .then((res) => {
+          for (let i = 0; i < res.products.length; i++) {
+            this.productsList.push(res.products[i]);
+          }
+          return;
+
+        })
+        .catch((err) => {
+          throw err;
+        });
+    };
+  }
 }());

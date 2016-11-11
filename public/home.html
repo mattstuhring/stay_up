@@ -8,8 +8,8 @@
           <uib-accordion-heading>
             <a href="" ng-click="cat.getSub(c.id)">
               {{ c.name }}
+              <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
             </a>
-            <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
           </uib-accordion-heading>
           <div class="panel-default" ng-repeat="s in cat.secondList">
             <a href="" ng-click="cat.getSubProd(s.id)">
@@ -24,7 +24,7 @@
     <div class="col-md-9">
       <div class="row">
         <!-- Product thumbnail -->
-        <div class="col-md-3" ng-repeat="p in cat.products">
+        <div class="col-md-3" ng-repeat="p in cat.productsList">
           <div class="thumbnail">
             <div class="thumbnailBox">
               <img src="{{ p.image.sizes.Large.url }}" alt="...">
@@ -36,6 +36,11 @@
               </h4>
               <!-- <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p> -->
             </div>
+          </div>
+        </div>
+        <div class"row">
+          <div class="offset-md-6">
+            <a href="" class="text-center" ng-click="cat.loadMore(cat.categoryId)">Load More</a>
           </div>
         </div>
       </div>
