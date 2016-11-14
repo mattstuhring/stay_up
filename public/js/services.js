@@ -78,6 +78,17 @@
           });
       },
 
+      getKeywordSearch: (key) => {
+        return $http.get(`https://api.shopstyle.com/api/v2/products?pid=uid4641-36786129-92&cat=men&fts=${key}&offset=0&limit=48`)
+          .then((res) => {
+            console.log(res.data);
+            return res.data.products;
+          })
+          .catch((err) => {
+            throw err;
+          });
+      },
+
       getInitialProducts: () => {
         return $http.get('https://api.shopstyle.com/api/v2/products?pid=uid4641-36786129-92&cat=men&offset=0&limit=48')
           .then((res) => {

@@ -5,15 +5,10 @@
     <div class="col-md-3">
       <div class="row">
         <div class="col-md-12 col-centered">
-          <h4 class="text-center">Category Name</h4>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12 col-centered">
           <div class="btn-group btn-group-s btn-group-justified btn-center">
-            <label class="btn btn-primary" ng-model="radioModel" uib-btn-radio="'Left'">$ High</label>
-            <label class="btn btn-primary" ng-model="radioModel" uib-btn-radio="'Middle'">$ Low</label>
-            <label class="btn btn-primary" ng-model="radioModel" uib-btn-radio="'Right'">Popular</label>
+            <label class="btn btn-primary" ng-model="radioModel" uib-btn-radio="'Left'" ng-click="cat.sortBy('-price')">$ High</label>
+            <label class="btn btn-primary" ng-model="radioModel" uib-btn-radio="'Middle'" ng-click="cat.sortBy('price')">$ Low</label>
+            <label class="btn btn-primary" ng-model="radioModel" uib-btn-radio="'Right'" ng-click="cat.sortBy(null)">Popular</label>
           </div>
         </div>
       </div>
@@ -40,9 +35,9 @@
         <div class="col-md-12">
           <div class="input-group">
             <span class="input-group-btn">
-              <button class="btn btn-primary" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+              <button class="btn btn-primary" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true" ng-click="cat.search(cat.keyword)"></span></button>
             </span>
-            <input type="text" class="form-control" placeholder="Search for...">
+            <input type="text" ng-model="cat.keyword" class="form-control" placeholder="Search for...">
           </div>
         </div>
       </div>
@@ -53,7 +48,7 @@
       <div class="row">
 
         <!-- Product thumbnail -->
-        <div class="col-md-3" ng-repeat="p in cat.productsList">
+        <div class="col-md-3" ng-repeat="p in cat.productsList | orderBy: cat.orderProp">
           <div class="thumbnail">
             <div class="thumbnailBox">
               <img src="{{ p.image.sizes.Large.url }}" alt="...">

@@ -13,6 +13,22 @@
     this.productsList = [];
     this.categoryProducts = [];
     this.categoryId = '';
+    this.orderProp = '';
+
+    this.sortBy = (prop) => {
+      this.orderProp = prop;
+    }
+
+    this.search = (key) => {
+      CategorySVC.getKeywordSearch(key)
+        .then((res) => {
+          this.productsList = res;
+          this.keyword = '';
+        })
+        .catch((err) => {
+          throw err;
+        });
+    }
 
     this.getSub = (category) => {
       CategorySVC.getSubCategories(category)
