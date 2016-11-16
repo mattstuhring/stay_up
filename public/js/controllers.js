@@ -7,7 +7,83 @@
 
   CategoryCTRL.$inject = ['$scope', '$window', 'CategorySVC'];
 
+
+
   function CategoryCTRL($scope, $window, CategorySVC) {
+
+
+
+
+
+  $scope.myInterval = 5000;
+  $scope.noWrapSlides = false;
+  $scope.active = 0;
+  var slides = $scope.slides = [];
+  var currIndex = 0;
+
+  $scope.addSlide = function() {
+    var newWidth = 600 + slides.length + 1;
+    slides.push({
+      image: `banner${currIndex}.png`,
+      id: currIndex++
+    });
+  };
+
+  $scope.randomize = function() {
+    var indexes = generateIndexesArray();
+    assignNewIndexesToSlides(indexes);
+  };
+
+  for (var i = 0; i < 6; i++) {
+    $scope.addSlide();
+  }
+
+  // Randomize logic below
+
+  function assignNewIndexesToSlides(indexes) {
+    for (var i = 0, l = slides.length; i < l; i++) {
+      slides[i].id = indexes.pop();
+    }
+  }
+
+  function generateIndexesArray() {
+    var indexes = [];
+    for (var i = 0; i < currIndex; ++i) {
+      indexes[i] = i;
+    }
+    return shuffle(indexes);
+  }
+
+  // http://stackoverflow.com/questions/962802#962890
+  function shuffle(array) {
+    var tmp, current, top = array.length;
+
+    if (top) {
+      while (--top) {
+        current = Math.floor(Math.random() * (top + 1));
+        tmp = array[current];
+        array[current] = array[top];
+        array[top] = tmp;
+      }
+    }
+
+    return array;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     this.firstList = [];
     this.secondList = [];
     this.productsList = [];
@@ -15,9 +91,12 @@
     this.categoryId = '';
     this.orderProp = '';
 
+    this.searchIconClick = false;
+    this.status = false;
+
     this.sortBy = (prop) => {
       this.orderProp = prop;
-    }
+    };
 
     this.search = (key) => {
       CategorySVC.getKeywordSearch(key)
@@ -28,7 +107,7 @@
         .catch((err) => {
           throw err;
         });
-    }
+    };
 
     this.getSub = (category) => {
       CategorySVC.getSubCategories(category)
@@ -56,6 +135,7 @@
     const activate = () => {
       CategorySVC.getCategories()
         .then((categories) => {
+          console.log(categories);
           this.firstList = categories;
         })
         .catch((err) => {
@@ -76,7 +156,6 @@
 
     activate();
     initialProducts();
-
 
     $scope.offset = 0;
 

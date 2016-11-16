@@ -1,73 +1,127 @@
-<div class="container">
-  <div class="row" ng-controller="CategoryCTRL as cat">
+<div ng-controller="CategoryCTRL as cat">
 
-    <!-- Side Nav Accordian -->
-    <div class="col-md-3">
-      <div class="row">
-        <div class="col-md-12 col-centered">
-          <div class="btn-group btn-group-s btn-group-justified btn-center">
-            <label class="btn btn-primary" ng-model="radioModel" uib-btn-radio="'Left'" ng-click="cat.sortBy('-price')">$ High</label>
-            <label class="btn btn-primary" ng-model="radioModel" uib-btn-radio="'Middle'" ng-click="cat.sortBy('price')">$ Low</label>
-            <label class="btn btn-primary" ng-model="radioModel" uib-btn-radio="'Right'" ng-click="cat.sortBy(null)">Popular</label>
+  <!-- Top Nav Bar -->
+  <header>
+    <nav class="navbar navbar-default">
+      <div class="container">
+
+        <!-- LOGO -->
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#/" ng-click="">Stay Up</a>
+        </div>
+
+        <!-- NAV FILTER BTN -->
+        <div class="btn-group navbar-btn navbar-right" uib-dropdown is-open="false">
+          <button type="button" class="btn btn-default" uib-dropdown-toggle ng-disabled="disabled">
+            <span class="glyphicon glyphicon-filter" aria-hidden="true"></span>
+          </button>
+          <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+            <li role="menuitem">
+              <a href="" ng-click="cat.sortBy(null)">Popular</a>
+            </li>
+            <li role="menuitem">
+              <a href="" ng-click="cat.sortBy('-price')">$ High</a>
+            </li>
+            <li role="menuitem">
+              <a href="" ng-click="cat.sortBy('price')">$ Low</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- NAV SEARCH BTN -->
+        <div class="navbar-btn navbar-right">
+          <button type="submit" class="btn btn-default" ng-click="searchIconClick = !searchIconClick">
+            <span class="glyphicon" ng-class="{'glyphicon-search': !searchIconClick, 'glyphicon-remove': searchIconClick}" aria-hidden="true"></span>
+          </button>
+        </div>
+
+        <!-- HIDDEN NAV SEARCH INPUT -->
+        <form class="navbar-form navbar-right" ng-show="searchIconClick" role="search">
+          <button type="submit" class="btn btn-default" ng-click="cat.search(cat.keyword)">
+            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+          </button>
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search..." ng-model="cat.keyword">
           </div>
-        </div>
+        </form>
       </div>
-      <div class="row">
-        <div class="col-md-12">
-          <uib-accordion>
-            <div uib-accordion-group class="panel-default" is-open="status.open" ng-repeat="c in cat.firstList">
-              <uib-accordion-heading>
-                <a href="" ng-click="cat.getSub(c.id)">
-                  {{ c.name }}
-                  <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
-                </a>
-              </uib-accordion-heading>
-              <div class="panel-default" ng-repeat="s in cat.secondList">
-                <a href="" ng-click="cat.getSubProd(s.id)">
-                  {{ s.name }}
-                </a>
-              </div>
+    </nav>
+  </header>
+
+
+
+
+  <!-- CATEGORY BUTTONS -->
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-centered btn-group btn-group-justified btn-cat-group">
+            <div class="btn-group" uib-dropdown is-open="false" ng-repeat="c in cat.firstList">
+              <button id="single-button" type="button" class="btn btn-default" uib-dropdown-toggle ng-disabled="disabled" ng-click="cat.getSub(c.id)">
+                {{ c.shortName }}
+              </button>
+              <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+                <li role="menuitem" ng-repeat="s in cat.secondList"><a href="" ng-click="cat.getSubProd(s.id)">{{ s.name }}</a></li>
+              </ul>
             </div>
-          </uib-accordion>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <div class="input-group">
-            <span class="input-group-btn">
-              <button class="btn btn-primary" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true" ng-click="cat.search(cat.keyword)"></span></button>
-            </span>
-            <input type="text" ng-model="cat.keyword" class="form-control" placeholder="Search for...">
           </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- Display Products -->
-    <div class="col-md-9">
-      <div class="row">
 
-        <!-- Product thumbnail -->
-        <div class="col-md-3" ng-repeat="p in cat.productsList | orderBy: cat.orderProp">
-          <div class="thumbnail">
-            <div class="thumbnailBox">
-              <img src="{{ p.image.sizes.Large.url }}" alt="...">
-            </div>
-            <div class="caption">
-              <p class="text-wrap">{{ p.brandedName }}</p>
-              <h4 class="text-center">
-                <em>{{ p.priceLabel }}</em>
-              </h4>
-              <!-- <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p> -->
+
+
+
+
+
+  <!-- CAROUSEL -->
+  <div style="height: 305px">
+    <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides" no-pause="true">
+      <div uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id">
+        <img class="slide-image" ng-src="{{slide.image}}">
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- DISPLAY PRODUCTS -->
+  <!-- <div class="page-header">
+    <h1>Example page header <small class="pull-right">Subtext for header</small></h1>
+  </div> -->
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+
+        <!-- PRODUCT THUMBNAILS -->
+        <div class="row">
+          <div class="col-md-4" ng-repeat="p in cat.productsList | orderBy: cat.orderProp">
+            <div class="thumbnail">
+              <div class="thumbnailBox">
+                <img class="thumb-img" src="{{ p.image.sizes.Large.url }}" alt="...">
+              </div>
+              <div class="caption">
+                <p class="text-wrap text-center">{{ p.brandedName }}</p>
+                <h4 class="text-center">
+                  <em>{{ p.priceLabel }}</em>
+                </h4>
+                <!-- <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p> -->
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class"row">
-        <div class="col-md-2 col-centered">
-          <p class="text-center">
-            <a href="" ng-click="cat.loadMore(cat.categoryId)">Load More</a>
-          </p>
+
+        <!-- LOAD MORE BTN -->
+        <div class"row">
+          <div class="col-md-2 col-centered">
+            <p class="text-center">
+              <a href="" ng-click="cat.loadMore(cat.categoryId)">Load More</a>
+            </p>
+          </div>
         </div>
       </div>
     </div>
