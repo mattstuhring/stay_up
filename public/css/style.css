@@ -7,12 +7,7 @@
   margin-bottom: 1px;
 }
 
-h1 {
-  margin-left: 140px;
-}
-
-h1 small {
-  margin-right: 130px;
+h3 small {
   margin-top: 20px;
   font-size: 50%;
 }
@@ -22,7 +17,7 @@ h1 small {
 }
 
 .btn-cat-group {
-  width: 42.666667%;
+  width: 65.666667%;
 }
 
 .navbar {
@@ -75,7 +70,7 @@ h1 small {
 }
 
 .slide-image {
-  width: 82%;
+  width: 53%;
 }
 
 .carousel-control {
@@ -84,4 +79,8 @@ h1 small {
 
 .carousel-indicators {
   display: none;
+}
+
+.thumbnail {
+  border: none;
 }

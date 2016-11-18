@@ -7,7 +7,7 @@
 
         <!-- LOGO -->
         <div class="navbar-header">
-          <a class="navbar-brand" href="#/" ng-click="">Stay Up</a>
+          <a class="navbar-brand" href="#/" ng-click="">STAY UP</a>
         </div>
 
         <!-- NAV FILTER BTN -->
@@ -59,7 +59,7 @@
           <div class="col-md-8 col-centered btn-group btn-group-justified btn-cat-group">
             <div class="btn-group" uib-dropdown is-open="false" ng-repeat="c in cat.firstList">
               <button id="single-button" type="button" class="btn btn-default" uib-dropdown-toggle ng-disabled="disabled" ng-click="cat.getSub(c.id)">
-                {{ c.shortName }}
+                {{ c.shortName | uppercase }}
               </button>
               <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
                 <li role="menuitem" ng-repeat="s in cat.secondList"><a href="" ng-click="cat.getSubProd(s.id)">{{ s.name }}</a></li>
@@ -73,27 +73,26 @@
 
 
 
-
-
-
-
   <!-- CAROUSEL -->
-  <div style="height: 305px">
-    <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides" no-pause="true">
-      <div uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id">
-        <img class="slide-image" ng-src="{{slide.image}}">
-      </div>
+  <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides" no-pause="true">
+    <div uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id">
+      <img class="slide-image" ng-src="{{slide.image}}">
     </div>
   </div>
 
 
 
-  <!-- DISPLAY PRODUCTS -->
-  <!-- <div class="page-header">
-    <h1>Example page header <small class="pull-right">Subtext for header</small></h1>
-  </div> -->
-
   <div class="container">
+    <!-- PRODUCT HEADER -->
+    <div class="row">
+      <div class="col-md-12">
+        <div class="page-header">
+          <h3>Example page header <small class="pull-right">Subtext for header</small></h3>
+        </div>
+      </div>
+    </div>
+
+    <!-- DISPLAY PRODUCTS -->
     <div class="row">
       <div class="col-md-12">
 
