@@ -2,31 +2,129 @@
   border-radius: 0 !important;
 }
 
+body {
+  padding-top: 50px;
+  font-family: 'Rationale', sans-serif;
+}
+
 .btn {
   border: none;
   margin-bottom: 1px;
-}
-
-h3 small {
-  margin-top: 20px;
-  font-size: 50%;
-}
-
-.form-control {
-  height: 32px;
+  font-size: 20px;
 }
 
 .btn-cat-group {
   width: 65.666667%;
 }
 
+.btn-center {
+  padding-bottom: 20px;
+}
+
+.carousel-control {
+  display: none;
+}
+
+.carousel-indicators {
+  display: none;
+}
+
+.center-block {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.col-centered{
+  float: none;
+  margin: 0 auto;
+}
+
+.filter-btn {
+  z-index: 2;
+}
+
+.first-nav {
+  background-color: whitesmoke;
+}
+
+.form-control {
+  height: 32px;
+}
+
+.glyphicon {
+  font-size: 20px;
+}
+
+.input-lg {
+  padding: 27px 16px;
+}
+
 .navbar {
   margin-bottom: 0px;
 }
 
+.navbar-brand {
+  padding: 0px;
+}
+
+.navbar-brand img {
+  margin-top: 4px;
+}
+
+.navbar-btn {
+  margin: 0px;
+}
+
+.navbar-default {
+  background-color: white;
+}
+
+.navbar-form {
+  margin: 0px;
+}
+
+.navbar-right button {
+  padding: 13px 12px;
+  background-color: whitesmoke;
+}
+
 .panel-body {
   padding: 0px;
-  height: 32px;
+  height: 40px;
+}
+
+.panel-container {
+  padding: 0px;
+}
+
+.panel-default {
+  border: none;
+  background-color: honeydew;
+}
+
+.search {
+  margin-bottom: 20px;
+}
+
+.second-nav {
+  margin-top: 55px;
+  min-height: 34px;
+  height: 34px;
+  z-index: 1;
+}
+
+#single-button {
+  background-color: honeydew;
+}
+
+#single-button:hover {
+  background: gainsboro;
+}
+
+.slide-image {
+  width: 82%;
+  margin-top: 70px;
 }
 
 .text-wrap {
@@ -35,8 +133,8 @@ h3 small {
   text-overflow: ellipsis;
 }
 
-.thumb-img {
-  padding-right: 10px;
+.thumbnail {
+  border: none;
 }
 
 .thumbnailBox {
@@ -50,37 +148,6 @@ h3 small {
   align-items: center;
 }
 
-.col-centered{
-  float: none;
-  margin: 0 auto;
-}
-
-.center-block {
-  display: block;
-  margin-right: auto;
-  margin-left: auto;
-}
-
-.btn-center {
-  padding-bottom: 20px;
-}
-
-.search {
-  margin-bottom: 20px;
-}
-
-.slide-image {
-  width: 53%;
-}
-
-.carousel-control {
-  display: none;
-}
-
-.carousel-indicators {
-  display: none;
-}
-
-.thumbnail {
-  border: none;
+.thumb-img {
+  padding-right: 10px;
 }

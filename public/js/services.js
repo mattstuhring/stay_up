@@ -24,14 +24,11 @@
 
         return $http.get(`https://api.shopstyle.com/api/v2/categories?cat=${category}&depth=1&pid=uid4641-36786129-92`)
           .then((res) => {
-            // console.log('svc cat', res);
-            const arr = [res.data.categories, res.data.metadata.root.id]
+            const arr = [res.data.categories, res.data.metadata.root.id, res.data.metadata.root.shortName]
             return arr;
           })
           .then((arr) => {
-            // console.log('arr', arr);
-             p = { names: arr[0], id: arr[1] };
-            //  console.log('p', p);
+             p = { names: arr[0], id: arr[1], name: arr[2] };
 
             return $http.get(`https://api.shopstyle.com/api/v2/products?pid=uid4641-36786129-92&cat=${category}&offset=0&limit=48`)
               .then((res) => {

@@ -2,17 +2,17 @@
 
   <!-- Top Nav Bar -->
   <header>
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-default navbar-fixed-top first-nav">
       <div class="container">
 
         <!-- LOGO -->
         <div class="navbar-header">
-          <a class="navbar-brand" href="#/" ng-click="">STAY UP</a>
+          <a class="navbar-brand" href="#/" ng-click=""><img src="stayup.png" alt="" /></a>
         </div>
 
         <!-- NAV FILTER BTN -->
-        <div class="btn-group navbar-btn navbar-right" uib-dropdown is-open="false">
-          <button type="button" class="btn btn-default" uib-dropdown-toggle ng-disabled="disabled">
+        <div class="btn-group navbar-btn navbar-right filter-btn" uib-dropdown is-open="false">
+          <button type="button" class="btn btn-default search-btn" uib-dropdown-toggle ng-disabled="disabled">
             <span class="glyphicon glyphicon-filter" aria-hidden="true"></span>
           </button>
           <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
@@ -37,11 +37,11 @@
 
         <!-- HIDDEN NAV SEARCH INPUT -->
         <form class="navbar-form navbar-right" ng-show="searchIconClick" role="search">
-          <button type="submit" class="btn btn-default" ng-click="cat.search(cat.keyword)">
+          <button type="submit" class="btn btn-default hidden-btn" ng-click="cat.search(cat.keyword)">
             <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
           </button>
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search..." ng-model="cat.keyword">
+            <input type="text" class="form-control input-lg" placeholder="Search..." ng-model="cat.keyword">
           </div>
         </form>
       </div>
@@ -52,11 +52,11 @@
 
 
   <!-- CATEGORY BUTTONS -->
-  <div class="panel panel-default">
-    <div class="panel-body">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-8 col-centered btn-group btn-group-justified btn-cat-group">
+  <nav class="navbar navbar-default navbar-fixed-top second-nav">
+    <div class="container-fluid panel-container">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="col-centered btn-group btn-group-justified btn-cat-group">
             <div class="btn-group" uib-dropdown is-open="false" ng-repeat="c in cat.firstList">
               <button id="single-button" type="button" class="btn btn-default" uib-dropdown-toggle ng-disabled="disabled" ng-click="cat.getSub(c.id)">
                 {{ c.shortName | uppercase }}
@@ -69,7 +69,8 @@
         </div>
       </div>
     </div>
-  </div>
+  </nav>
+
 
 
 
@@ -87,7 +88,7 @@
     <div class="row">
       <div class="col-md-12">
         <div class="page-header">
-          <h3>Example page header <small class="pull-right">Subtext for header</small></h3>
+          <h1>{{ cat.headerName }}</h1>
         </div>
       </div>
     </div>
@@ -104,10 +105,10 @@
                 <img class="thumb-img" src="{{ p.image.sizes.Large.url }}" alt="...">
               </div>
               <div class="caption">
-                <p class="text-wrap text-center">{{ p.brandedName }}</p>
-                <h4 class="text-center">
+                <h4 class="text-wrap text-center">{{ p.brandedName }}</h4>
+                <h3 class="text-center">
                   <em>{{ p.priceLabel }}</em>
-                </h4>
+                </h3>
                 <!-- <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p> -->
               </div>
             </div>
