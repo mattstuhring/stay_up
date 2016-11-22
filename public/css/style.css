@@ -46,6 +46,10 @@ body {
   height: 32px;
 }
 
+.form-group {
+  display: inline-block;
+}
+
 .glyphicon {
   font-size: 20px;
 }
@@ -69,6 +73,14 @@ body {
 
 .navbar-btn {
   margin: 0px;
+}
+
+.navbar-collapse.in {
+  overflow-y: visible;
+}
+
+.navbar-default .navbar-collapse {
+
 }
 
 .navbar-default {
