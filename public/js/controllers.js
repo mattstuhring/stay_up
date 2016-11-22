@@ -20,6 +20,7 @@
 
     this.searchIconClick = false;
     this.status = false;
+    $scope.isNavCollapsed = true;
 
     this.sortBy = (prop) => {
       this.orderProp = prop;

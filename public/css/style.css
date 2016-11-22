@@ -44,10 +44,6 @@ body {
   z-index: 2;
 }
 
-.first-nav {
-  background-color: whitesmoke;
-}
-
 .form-control {
   height: 32px;
 }
@@ -69,7 +65,7 @@ body {
 }
 
 .navbar-brand img {
-  margin-top: 4px;
+  margin-top: 6px;
 }
 
 .navbar-btn {
@@ -77,7 +73,7 @@ body {
 }
 
 .navbar-default {
-  background-color: white;
+  background-color: beige;
 }
 
 .navbar-form {
@@ -86,7 +82,7 @@ body {
 
 .navbar-right button {
   padding: 13px 12px;
-  background-color: whitesmoke;
+  background-color: #d7f4d7;
 }
 
 .panel-body {
@@ -100,7 +96,11 @@ body {
 
 .panel-default {
   border: none;
-  background-color: honeydew;
+  background-color: khaki;
+}
+
+.price {
+  margin-top: 0px;
 }
 
 .search {
@@ -115,7 +115,8 @@ body {
 }
 
 #single-button {
-  background-color: honeydew;
+  background-color: khaki;
+  text-decoration: underline;
 }
 
 #single-button:hover {
@@ -137,8 +138,13 @@ body {
   border: none;
 }
 
+.thumbnail .caption {
+  background-color: #d7f4d7;
+}
+
 .thumbnailBox {
-  width: 362.38px;
+  width: 352.38px;
+  background-color: whitesmoke;
   height: 220px;
   display:flex;
   flex-direction: row;
