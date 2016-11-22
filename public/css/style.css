@@ -13,9 +13,7 @@ body {
   font-size: 20px;
 }
 
-.btn-cat-group {
-  width: 65.666667%;
-}
+
 
 .btn-center {
   padding-bottom: 20px;
@@ -93,6 +91,8 @@ body {
 
 .panel-container {
   padding: 0px;
+  background-color: khaki;
+  height: 41px;
 }
 
 .panel-default {
