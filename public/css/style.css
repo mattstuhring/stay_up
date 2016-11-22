@@ -79,8 +79,9 @@ body {
   overflow-y: visible;
 }
 
-.navbar-default .navbar-collapse {
-
+.navbar-default .navbar-toggle {
+    border-color: #ddd;
+    background-color: #d7f4d7;
 }
 
 .navbar-default {
