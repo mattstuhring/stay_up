@@ -13,52 +13,50 @@
     				<span class="icon-bar"></span>
     				<span class="icon-bar"></span>
     			</button>
-          <a class="navbar-brand" href="#/" ng-click=""><img src="stayup.png" alt="" /></a>
+          <a class="navbar-brand" href="#/" ng-click=""><img class="img-responsive" src="stayup.png" alt="" /></a>
         </div>
 
-        <!-- NAV FILTER BTN -->
+        <!-- COLLAPSE WRAPPER -->
         <div class="collapse navbar-collapse" uib-collapse="isNavCollapsed">
 
-        <div class="btn-group navbar-btn navbar-right filter-btn" uib-dropdown is-open="false">
-          <button type="button" class="btn btn-default search-btn" uib-dropdown-toggle ng-disabled="disabled">
-            <span class="glyphicon glyphicon-filter" aria-hidden="true"></span>
-          </button>
-          <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
-            <li role="menuitem">
-              <a href="" ng-click="cat.sortBy(null)">Popular</a>
-            </li>
-            <li role="menuitem">
-              <a href="" ng-click="cat.sortBy('-price')">$ High</a>
-            </li>
-            <li role="menuitem">
-              <a href="" ng-click="cat.sortBy('price')">$ Low</a>
-            </li>
-          </ul>
-        </div>
-
-        <!-- NAV SEARCH BTN -->
-        <div class="navbar-btn navbar-right">
-          <button type="submit" class="btn btn-default" ng-click="searchIconClick = !searchIconClick">
-            <span class="glyphicon" ng-class="{'glyphicon-search': !searchIconClick, 'glyphicon-remove': searchIconClick}" aria-hidden="true"></span>
-          </button>
-        </div>
-
-        <!-- HIDDEN NAV SEARCH INPUT -->
-        <form class="navbar-form navbar-right" ng-show="searchIconClick" role="search">
-          <button type="submit" class="btn btn-default hidden-btn" ng-click="cat.search(cat.keyword)">
-            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-          </button>
-          <div class="form-group">
-            <input type="text" class="form-control input-lg" placeholder="Search..." ng-model="cat.keyword">
+          <!-- NAV FILTER BTN -->
+          <div class="btn-group navbar-btn navbar-right filter-btn" uib-dropdown is-open="false">
+            <button type="button" class="btn btn-default search-btn" uib-dropdown-toggle ng-disabled="disabled">
+              <span class="glyphicon glyphicon-filter" aria-hidden="true"></span>
+            </button>
+            <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+              <li role="menuitem">
+                <a href="" ng-click="cat.sortBy(null)">Popular</a>
+              </li>
+              <li role="menuitem">
+                <a href="" ng-click="cat.sortBy('-price')">$ High</a>
+              </li>
+              <li role="menuitem">
+                <a href="" ng-click="cat.sortBy('price')">$ Low</a>
+              </li>
+            </ul>
           </div>
-        </form>
-      </div>
 
+          <!-- NAV SEARCH BTN -->
+          <div class="navbar-btn navbar-right">
+            <button type="submit" class="btn btn-default" ng-click="searchIconClick = !searchIconClick">
+              <span class="glyphicon" ng-class="{'glyphicon-search': !searchIconClick, 'glyphicon-remove': searchIconClick}" aria-hidden="true"></span>
+            </button>
+          </div>
+
+          <!-- HIDDEN NAV SEARCH INPUT -->
+          <form class="navbar-form navbar-right" ng-show="searchIconClick" role="search">
+            <button type="submit" class="btn btn-default hidden-btn" ng-click="cat.search(cat.keyword)">
+              <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+            </button>
+            <div class="form-group">
+              <input type="text" class="form-control input-lg" placeholder="Search..." ng-model="cat.keyword">
+            </div>
+          </form>
+        </div>
       </div>
     </nav>
   </header>
-
-
 
 
   <!-- CATEGORY BUTTONS -->
@@ -109,10 +107,10 @@
 
         <!-- PRODUCT THUMBNAILS -->
         <div class="row">
-          <div class="col-md-4" ng-repeat="p in cat.productsList | orderBy: cat.orderProp">
+          <div class="col-xs-12 col-sm-4 col-md-4" ng-repeat="p in cat.productsList | orderBy: cat.orderProp">
             <div class="thumbnail">
               <div class="thumbnailBox">
-                <img class="thumb-img" src="{{ p.image.sizes.Large.url }}" alt="...">
+                <img class="thumb-img center-block img-responsive" src="{{ p.image.sizes.Large.url }}" alt="...">
               </div>
               <div class="caption">
                 <h4 class="text-wrap text-center">{{ p.brandedName }}</h4>

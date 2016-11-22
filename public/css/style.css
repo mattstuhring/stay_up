@@ -58,6 +58,7 @@ body {
 
 .navbar {
   margin-bottom: 0px;
+  min-height: 55px;
 }
 
 .navbar-brand {
@@ -143,7 +144,6 @@ body {
 }
 
 .thumbnailBox {
-  width: 352.38px;
   background-color: whitesmoke;
   height: 220px;
   display:flex;
