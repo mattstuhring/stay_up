@@ -178,7 +178,7 @@
     this.login = () => {
       AuthSVC.login(this.username, this.password)
         .then((user) => {
-          $location.path('/home');
+          $location.path('/');
         })
         .catch((err) => {
           console.log(err);

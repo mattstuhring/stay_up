@@ -37,11 +37,20 @@
             </ul>
           </div>
 
-          <div class="navbar-btn navbar-right">
+
+          <div ng-controller="AuthCtrl as auth">
+            <div class="navbar-btn navbar-right user-btn user-hover">
+              <a ng-href="#/login" ng-if="!auth.isLoggedIn()"><span class="fa fa-user login-btn"></span></a>
+
+              <a href="" ng-if="auth.isLoggedIn()" ng-click="auth.logout()"><span class="fa fa-user-o logout-btn"></span></a>
+            </div>
+          </div>
+
+          <!-- <div class="navbar-btn navbar-right">
             <a class="btn btn-default user-btn" href="#/login" role="button">
               <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
             </a>
-          </div>
+          </div> -->
 
           <!-- NAV SEARCH BTN -->
           <div class="navbar-btn navbar-right">

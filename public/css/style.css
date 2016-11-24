@@ -47,7 +47,6 @@ body {
 
 .home-btn {
   border: none;
-  margin-bottom: 1px;
   font-size: 20px;
 }
 
@@ -57,6 +56,24 @@ body {
 
 .input-lg {
   padding: 27px 16px;
+}
+
+.login-btn {
+  font-size: 25px !important;
+  position: relative;
+  top: 2px;
+  color: #333;
+  padding-right: 12px;
+  padding-left: 12px;
+}
+
+.logout-btn {
+  font-size: 25px !important;
+  position: relative;
+  top: 2px;
+  color: #AA0000;
+  padding-right: 12px;
+  padding-left: 12px;
 }
 
 .navbar {
@@ -180,11 +197,14 @@ body {
 
 .user-btn {
   border: none;
-  margin-bottom: 1px;
   font-size: 20px;
-  padding-bottom: 13px;
+  padding-bottom: 12px;
   padding-top: 13px;
   background-color: #d7f4d7;
+}
+
+.user-btn:hover {
+  background-color: #e6e6e6;
 }
 
 

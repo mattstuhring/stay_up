@@ -10,9 +10,12 @@ const port = process.env.PORT || 8000;
 
 // Middleware
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 
 // Routes go here
+const users = require('./routes/users');
+const token = require('./routes/token');
 
 const app = express();
 
@@ -31,7 +34,12 @@ switch (app.get('env')) {
 }
 
 app.use(bodyParser.json());
+app.use(cookieParser());
+
 app.use(express.static(path.join('public')));
+
+app.use(users);
+app.use(token);
 
 // error catch all 400
 app.use((_req, res, _next) => {

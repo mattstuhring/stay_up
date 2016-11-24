@@ -10,18 +10,18 @@
         <div class="inputs">
           <div class="form-group">
             <div class="col-sm-12">
-              <input type="text" class="form-control form-login" id="inputUsername" placeholder="Username">
+              <input type="text" class="form-control form-login" id="username" placeholder="Username" ng-model="auth.username">
             </div>
           </div>
           <div class="form-group">
             <div class="col-sm-12">
-              <input type="password" class="form-control form-login" id="inputPassword3" placeholder="Password">
+              <input type="password" class="form-control form-login" id="password" placeholder="Password" ng-model="auth.password">
             </div>
           </div>
         </div>
         <div class="form-group form-btn-group">
           <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-default btn-login submit-btn">
+            <button type="submit" ng-click="auth.login()" class="btn btn-default btn-login submit-btn">
               <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
             </button>
             <button type="submit" class="btn btn-default btn-login">
