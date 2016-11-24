@@ -1,11 +1,16 @@
 'use strict';
 
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config({ silent: true});
+}
+
 const express = require('express');
 const path = require('path');
 const port = process.env.PORT || 8000;
 
 // Middleware
 const bodyParser = require('body-parser');
+const morgan = require('morgan');
 
 // Routes go here
 
@@ -13,10 +18,16 @@ const app = express();
 
 app.disable('x-powered-by');
 
-if (process.env.NODE_ENV !== 'test') {
-  const morgan = require('morgan');
+switch (app.get('env')) {
+  case 'development':
+    app.use(morgan('dev'));
+    break;
 
-  app.use(morgan('short'));
+  case 'production':
+    app.use(morgan('short'));
+    break;
+
+  default:
 }
 
 app.use(bodyParser.json());

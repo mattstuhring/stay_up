@@ -1,4 +1,4 @@
-<div ng-controller="CategoryCTRL as cat">
+<div ng-controller="CategoryCTRL as cat" class="home-div">
 
   <!-- Top Nav Bar -->
   <header>
@@ -13,7 +13,7 @@
     				<span class="icon-bar"></span>
     				<span class="icon-bar"></span>
     			</button>
-          <a class="navbar-brand" href="#/" ng-click=""><img class="img-responsive" src="stayup.png" alt="" /></a>
+          <a class="navbar-brand" href="#/" ng-click=""><img class="img-responsive" src="images/stayup.png" alt="" /></a>
         </div>
 
         <!-- COLLAPSE WRAPPER -->
@@ -21,7 +21,7 @@
 
           <!-- NAV FILTER BTN -->
           <div class="btn-group navbar-btn navbar-right filter-btn" uib-dropdown is-open="false">
-            <button type="button" class="btn btn-default search-btn" uib-dropdown-toggle ng-disabled="disabled">
+            <button type="button" class="btn home-btn btn-default search-btn" uib-dropdown-toggle ng-disabled="disabled">
               <span class="glyphicon glyphicon-filter" aria-hidden="true"></span>
             </button>
             <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
@@ -39,18 +39,18 @@
 
           <!-- NAV SEARCH BTN -->
           <div class="navbar-btn navbar-right">
-            <button type="submit" class="btn btn-default" ng-click="searchIconClick = !searchIconClick">
+            <button type="submit" class="btn home-btn btn-default" ng-click="searchIconClick = !searchIconClick">
               <span class="glyphicon" ng-class="{'glyphicon-search': !searchIconClick, 'glyphicon-remove': searchIconClick}" aria-hidden="true"></span>
             </button>
           </div>
 
           <!-- HIDDEN NAV SEARCH INPUT -->
           <form class="navbar-form navbar-right" ng-show="searchIconClick" role="search">
-            <button type="submit" class="btn btn-default hidden-btn" ng-click="cat.search(cat.keyword)">
+            <button type="submit" class="btn btn-default home-btn hidden-btn" ng-click="cat.search(cat.keyword)">
               <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
             </button>
-            <div class="form-group">
-              <input type="text" class="form-control input-lg" placeholder="Search..." ng-model="cat.keyword">
+            <div class="form-group form-div">
+              <input type="text" class="form-control nav-input input-lg" placeholder="Search..." ng-model="cat.keyword">
             </div>
           </form>
         </div>
@@ -61,14 +61,14 @@
 
   <!-- CATEGORY BUTTONS -->
   <nav class="navbar navbar-default navbar-fixed-top second-nav">
-    <div class="container-fluid panel-container">
+    <div class="container-fluid panel-container p-contain">
       <div class="row">
         <div class="col-md-8 col-md-offset-2">
-          <div class="panel panel-default">
-            <div class="panel-body">
+          <div class="panel panel-default p-default">
+            <div class="panel-body panel-style">
               <div class="col-centered btn-group btn-group-justified btn-cat-group">
                 <div class="btn-group" uib-dropdown is-open="false" ng-repeat="c in cat.firstList">
-                  <button id="single-button" type="button" class="btn btn-default" uib-dropdown-toggle ng-disabled="disabled" ng-click="cat.getSub(c.id)">
+                  <button id="single-button" type="button" class="btn home-btn btn-default" uib-dropdown-toggle ng-disabled="disabled" ng-click="cat.getSub(c.id)">
                     {{ c.shortName | uppercase }}
                   </button>
                   <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
@@ -112,8 +112,8 @@
         <!-- PRODUCT THUMBNAILS -->
         <div class="row">
           <div class="col-xs-12 col-sm-4 col-md-4" ng-repeat="p in cat.productsList | orderBy: cat.orderProp">
-            <div class="thumbnail">
-              <div class="thumbnailBox">
+            <div class="thumbnail thumb">
+              <div class="thumbnail-box">
                 <img class="thumb-img center-block img-responsive" src="{{ p.image.sizes.Large.url }}" alt="...">
               </div>
               <div class="caption">

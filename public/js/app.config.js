@@ -9,6 +9,11 @@
         templateUrl: 'home.html',
         controller: 'CategoryCTRL',
         controllerAs: 'cat'
+      })
+      .when('/login', {
+        templateUrl: 'login.html',
+        controller: 'AuthCtrl',
+        controllerAs: 'auth'
       });
   });
 }());

@@ -4,8 +4,12 @@
   const app = angular.module('stayup');
 
   app.factory('CategorySVC', CategorySVC);
+  app.factory('AuthSVC', AuthSVC);
+  app.factory('RegSVC', RegSVC);
 
   CategorySVC.$inject = ['$http', '$routeParams'];
+  AuthSVC.$inject = ['$http'];
+  RegSVC.$inject = ['$http'];
 
   function CategorySVC($http, $routeParams) {
     return {
@@ -97,4 +101,43 @@
       }
     };
   }
+
+
+  function AuthSVC($http) {
+      return {
+        login: (username, password) => {
+          return $http.post('/api/token', { username, password })
+            .then((res) => {
+              return res.data;
+            })
+            .catch((err) => {
+              throw err;
+            });
+        },
+        logout: () => {
+          return $http.delete('/api/token')
+            .then((res) => {
+              return res.data;
+            })
+            .catch((err) => {
+              throw err;
+            });
+        }
+      };
+    }
+
+    function RegSVC($http) {
+      return {
+        regUser: (user) => {
+          return $http.post('/api/users', user)
+            .then((res) => {
+              return res.data;
+            })
+            .catch((err) => {
+              throw err;
+            });
+        }
+      }
+    }
+
 }());

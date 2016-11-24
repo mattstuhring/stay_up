@@ -4,10 +4,12 @@
   const app = angular.module('stayup');
 
   app.controller('CategoryCTRL', CategoryCTRL);
+  app.controller('AuthCtrl', AuthCtrl);
+  app.controller('RegCtrl', RegCtrl);
 
   CategoryCTRL.$inject = ['$scope', '$window', 'CategorySVC'];
-
-
+  AuthCtrl.$inject = ['$location', '$cookies', 'AuthSVC'];
+  RegCtrl.$inject = ['$http', '$location', 'RegSVC'];
 
   function CategoryCTRL($scope, $window, CategorySVC) {
     this.firstList = [];
@@ -53,7 +55,6 @@
     this.getSubProd = (category) => {
       CategorySVC.getSubProducts(category)
         .then((res) => {
-          console.log('you are here', res);
           this.headerName = res.metadata.category.shortName;
           this.productsList = res.products;
           this.categoryId = res.metadata.category.id;
@@ -118,7 +119,7 @@
     $scope.addSlide = function() {
       var newWidth = 600 + slides.length + 1;
       slides.push({
-        image: `banner${currIndex}.png`,
+        image: `images/banner${currIndex}.png`,
         id: currIndex++
       });
     };
@@ -133,7 +134,6 @@
     }
 
     // Randomize logic below
-
     function assignNewIndexesToSlides(indexes) {
       for (var i = 0, l = slides.length; i < l; i++) {
         slides[i].id = indexes.pop();
@@ -163,5 +163,48 @@
 
       return array;
     }
+  }
+
+
+
+  function AuthCtrl($location, $cookies, AuthSVC) {
+    this.username = '';
+    this.password = '';
+
+    this.isLoggedIn = () => {
+      return $cookies.get('loggedIn');
+    }
+
+    this.login = () => {
+      AuthSVC.login(this.username, this.password)
+        .then((user) => {
+          $location.path('/home');
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+
+    this.logout = () => {
+      AuthSVC.logout();
+    };
+  }
+
+
+
+  function RegCtrl($http, $location, RegSVC) {
+    this.showReg = '';
+    this.regForm = {};
+
+    this.addUser = () => {
+      RegSVC.regUser(this.regForm)
+        .then((user) => {
+          this.showReg = false;
+          $location.path('/login');
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
   }
 }());
