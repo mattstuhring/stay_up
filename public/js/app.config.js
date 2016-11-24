@@ -14,6 +14,11 @@
         templateUrl: 'login.html',
         controller: 'AuthCtrl',
         controllerAs: 'auth'
+      })
+      .when('/register', {
+        templateUrl: 'register.html',
+        controller: 'RegCtrl',
+        controllerAs: 'reg'
       });
   });
 }());

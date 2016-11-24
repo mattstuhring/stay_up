@@ -95,6 +95,8 @@ body {
 
 .nav-input {
   height: 32px;
+  border:0 solid transparent;
+  background: white;
 }
 
 .navbar-right button {
@@ -176,10 +178,19 @@ body {
   padding-right: 10px;
 }
 
+.user-btn {
+  border: none;
+  margin-bottom: 1px;
+  font-size: 20px;
+  padding-bottom: 13px;
+  padding-top: 13px;
+  background-color: #d7f4d7;
+}
 
 
 
-/* STYLING - login.html */
+
+/*  STYLING - login.html & register.html  */
 
 .border {
   background-color: khaki;
@@ -189,12 +200,16 @@ body {
   margin-bottom: 20px;
   border: none;
   padding: 10px;
-  width: 110px;
+  width: 105px;
   background-color: #d7f4d7;
 }
 
 .container-login {
   margin-top: 50px;
+}
+
+.form-btn-group {
+  margin-bottom: 0px;
 }
 
 .form-login {
@@ -222,6 +237,14 @@ body {
 
 .page-header {
   border-bottom: 2px solid lightgrey;
+}
+
+.anchor {
+  margin-bottom: 20px;
+}
+
+.reg-center {
+  text-align: center;
 }
 
 .submit-btn {
