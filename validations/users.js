@@ -6,7 +6,7 @@ module.exports.post = {
   body: {
     username: Joi.string()
       .min(3)
-      .max(31)
+      .max(255)
       .label('Username')
       .trim()
       .required(),

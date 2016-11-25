@@ -195,16 +195,27 @@
   function RegCtrl($http, $location, RegSVC) {
     this.showReg = '';
     this.regForm = {};
+    this.submitted = true;
 
-    this.addUser = () => {
-      RegSVC.regUser(this.regForm)
-        .then((user) => {
-          this.showReg = false;
-          $location.path('/login');
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+    console.log(this.regForm);
+
+    this.addUser = (isValid) => {
+
+      if (isValid) {
+        alert('our form is valid!');
+      }
+
     };
+
+    // this.addUser = () => {
+    //   RegSVC.regUser(this.regForm)
+    //     .then((user) => {
+    //       this.showReg = false;
+    //       $location.path('/login');
+    //     })
+    //     .catch((err) => {
+    //       console.log(err);
+    //     });
+    // };
   }
 }());

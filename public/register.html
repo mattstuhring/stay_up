@@ -2,34 +2,61 @@
   <div class="row">
     <div class="col-md-4 col-md-offset-4 border">
 
+      <!-- PAGE HEADER -->
       <div class="page-header header-login">
         <h1 class="header-font">Sign Up</h1>
       </div>
 
-      <form class="form-horizontal">
+
+      <!-- FORM -->
+      <form class="form-horizontal" name="regForm" ng-submit="reg.addUser(regForm.$valid)" novalidate>
+
+
+        <!-- USERNAME -->
         <div class="inputs">
-          <div class="form-group">
+          <div class="form-group" ng-class="{ 'has-error' : regForm.username.$invalid && !regForm.username.$pristine, 'has-success' : regForm.username.$valid }">
             <div class="col-sm-12">
-              <input type="text" class="form-control form-login" id="inputUsername" placeholder="Username">
+              <input type="text" class="form-control form-login" id="inputUsername" placeholder="Username" name="username" ng-model="reg.regForm.username" ng-minlength="3" ng-maxlength="255" required>
+
+              <!-- show an error if username is too short -->
+              <p ng-show="regForm.username.$error.minlength" class="help-block">Username must be 3 or more characters.</p>
+
+              <!-- show an error if username is too long -->
+              <p ng-show="regForm.username.$error.maxlength" class="help-block">Username is too long.</p>
             </div>
           </div>
-          <div class="form-group">
+
+
+          <!-- PASSWORD -->
+          <div class="form-group" ng-class="{ 'has-error' : regForm.password.$invalid && !regForm.password.$pristine, 'has-success' : regForm.password.$valid }">
             <div class="col-sm-12">
-              <input type="password" class="form-control form-login" id="inputPassword3" placeholder="Password">
+              <input type="password" class="form-control form-login" id="inputPassword3" placeholder="Password" name="password" ng-model="reg.regForm.password" ng-minlength="3" required>
+
+              <!-- show an error if username is too short -->
+              <p ng-show="regForm.password.$error.minlength" class="help-block">Password must be 3 or more characters.</p>
             </div>
           </div>
         </div>
+
+
+        <!-- SUBMIT BUTTON -->
         <div class="form-group form-btn-group">
           <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-default btn-login submit-btn">
+            <button type="submit" class="btn btn-default btn-login submit-btn" ng-disabled="regForm.$invalid">
               <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
             </button>
+
+
+            <!-- CANCEL BUTTON -->
             <button type="submit" class="btn btn-default btn-login">
               <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
             </button>
           </div>
         </div>
       </form>
+
+
+      <!-- LINK TO LOGIN PAGE -->
       <div class="row anchor">
         <div class="col-md-12 reg-center">
           <a href="#/login">LOGIN</a>
