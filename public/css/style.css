@@ -99,7 +99,7 @@ body {
 
 .navbar-default .navbar-toggle {
     border-color: #ddd;
-    background-color: #d7f4d7;
+    background-color: #d4f4d4;
 }
 
 .navbar-default {
@@ -118,7 +118,7 @@ body {
 
 .navbar-right button {
   padding: 13px 12px;
-  background-color: #d7f4d7;
+  background-color: #d4f4d4;
 }
 
 .panel-style {
@@ -158,7 +158,7 @@ body {
 }
 
 #single-button:hover {
-  background: #d7f4d7;
+  background: #d4f4d4;
 }
 
 .slide-image {
@@ -178,7 +178,7 @@ body {
 }
 
 .thumb .caption {
-  background-color: #d7f4d7;
+  background-color: #d4f4d4;
 }
 
 .thumbnail-box {
@@ -200,12 +200,14 @@ body {
   font-size: 20px;
   padding-bottom: 12px;
   padding-top: 13px;
-  background-color: #d7f4d7;
+  background-color: #d4f4d4;
 }
 
 .user-btn:hover {
   background-color: #e6e6e6;
 }
+
+
 
 
 
@@ -221,7 +223,7 @@ body {
   border: none;
   padding: 10px;
   width: 105px;
-  background-color: #d7f4d7;
+  background-color: #d4f4d4;
 }
 
 .container-login {
@@ -249,7 +251,13 @@ body {
   margin-top: 20px;
 }
 
-.inputs {
+.inputs-reg {
+  background-color: #AA0000;
+  padding: 40px 25px 20px 25px;
+  margin-bottom: 20px;
+}
+
+.inputs-login {
   background-color: beige;
   padding: 40px 25px 20px 25px;
   margin-bottom: 20px;

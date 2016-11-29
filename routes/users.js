@@ -27,8 +27,7 @@ router.post('/api/users', ev(validations.post), (req, res, next) => {
       return bcrypt.hash(password, 12);
     })
     .then((hashedPassword) => {
-      const { firstName, lastName } = req.body;
-      const user = { firstName, lastName, username, hashedPassword };
+      const user = { username, hashedPassword };
       const newUser = decamelizeKeys(user);
 
       return knex('users').insert(newUser, '*');

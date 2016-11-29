@@ -188,6 +188,10 @@
     this.logout = () => {
       AuthSVC.logout();
     };
+
+    this.home = () => {
+      $location.path('/');
+    };
   }
 
 
@@ -195,27 +199,25 @@
   function RegCtrl($http, $location, RegSVC) {
     this.showReg = '';
     this.regForm = {};
-    this.submitted = true;
-
-    console.log(this.regForm);
 
     this.addUser = (isValid) => {
 
       if (isValid) {
         alert('our form is valid!');
-      }
 
+        RegSVC.regUser(this.regForm)
+          .then((user) => {
+            this.showReg = false;
+            $location.path('/login');
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
     };
 
-    // this.addUser = () => {
-    //   RegSVC.regUser(this.regForm)
-    //     .then((user) => {
-    //       this.showReg = false;
-    //       $location.path('/login');
-    //     })
-    //     .catch((err) => {
-    //       console.log(err);
-    //     });
-    // };
+    this.home = () => {
+      $location.path('/');
+    };
   }
 }());

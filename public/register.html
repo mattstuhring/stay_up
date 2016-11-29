@@ -13,7 +13,7 @@
 
 
         <!-- USERNAME -->
-        <div class="inputs">
+        <div class="inputs-reg">
           <div class="form-group" ng-class="{ 'has-error' : regForm.username.$invalid && !regForm.username.$pristine, 'has-success' : regForm.username.$valid }">
             <div class="col-sm-12">
               <input type="text" class="form-control form-login" id="inputUsername" placeholder="Username" name="username" ng-model="reg.regForm.username" ng-minlength="3" ng-maxlength="255" required>
@@ -48,7 +48,7 @@
 
 
             <!-- CANCEL BUTTON -->
-            <button type="submit" class="btn btn-default btn-login">
+            <button type="button" ng-click="reg.home()" class="btn btn-default btn-login">
               <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
             </button>
           </div>
