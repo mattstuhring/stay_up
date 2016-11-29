@@ -19,6 +19,11 @@
         templateUrl: 'register.html',
         controller: 'RegCtrl',
         controllerAs: 'reg'
+      })
+      .when('/mylook', {
+        templateUrl: 'mylook.html',
+        controller: 'LookCtrl',
+        controllerAs: 'look'
       });
   });
 }());

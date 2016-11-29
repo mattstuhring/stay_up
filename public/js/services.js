@@ -6,10 +6,12 @@
   app.factory('CategorySVC', CategorySVC);
   app.factory('AuthSVC', AuthSVC);
   app.factory('RegSVC', RegSVC);
+  // app.factory('LookSVC', LookSVC);
 
   CategorySVC.$inject = ['$http', '$routeParams'];
   AuthSVC.$inject = ['$http'];
   RegSVC.$inject = ['$http'];
+  // LookSVC.$inject = ['$http'];
 
   function CategorySVC($http, $routeParams) {
     return {
@@ -82,7 +84,6 @@
       getKeywordSearch: (key) => {
         return $http.get(`https://api.shopstyle.com/api/v2/products?pid=uid4641-36786129-92&cat=men&fts=${key}&offset=0&limit=48`)
           .then((res) => {
-            console.log(res.data);
             return res.data.products;
           })
           .catch((err) => {
@@ -93,6 +94,17 @@
       getInitialProducts: () => {
         return $http.get('https://api.shopstyle.com/api/v2/products?pid=uid4641-36786129-92&cat=men&offset=0&limit=48')
           .then((res) => {
+            return res.data;
+          })
+          .catch((err) => {
+            throw err;
+          });
+      },
+
+      postProduct: (product) => {
+        return $http.post('/api/products', product)
+          .then((res) => {
+            console.log('post product SVC', res.data);
             return res.data;
           })
           .catch((err) => {
@@ -137,7 +149,8 @@
               throw err;
             });
         }
-      }
+      };
     }
+
 
 }());

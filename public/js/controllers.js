@@ -6,23 +6,38 @@
   app.controller('CategoryCTRL', CategoryCTRL);
   app.controller('AuthCtrl', AuthCtrl);
   app.controller('RegCtrl', RegCtrl);
+  // app.controller('LookCtrl', LookCtrl);
 
   CategoryCTRL.$inject = ['$scope', '$window', 'CategorySVC'];
   AuthCtrl.$inject = ['$location', '$cookies', 'AuthSVC'];
   RegCtrl.$inject = ['$http', '$location', 'RegSVC'];
+  // LookCtrl.$inject = ['$scope'];
 
   function CategoryCTRL($scope, $window, CategorySVC) {
     this.firstList = [];
     this.secondList = [];
     this.productsList = [];
     this.categoryProducts = [];
+    this.myProducts = [];
     this.categoryId = '';
     this.orderProp = '';
     this.headerName = '';
-
     this.searchIconClick = false;
     this.status = false;
+
     $scope.isNavCollapsed = true;
+
+    this.addProduct = (p) => {
+      console.log('CTRL p', p);
+      CategorySVC.postProduct(p)
+        .then((product) => {
+          this.myProducts.push(product);
+        })
+        .catch((err) => {
+          throw err;
+        });
+    };
+
 
     this.sortBy = (prop) => {
       this.orderProp = prop;
@@ -220,4 +235,5 @@
       $location.path('/');
     };
   }
+
 }());
