@@ -6,12 +6,12 @@
   app.factory('CategorySVC', CategorySVC);
   app.factory('AuthSVC', AuthSVC);
   app.factory('RegSVC', RegSVC);
-  // app.factory('LookSVC', LookSVC);
+  app.factory('LookSVC', LookSVC);
 
   CategorySVC.$inject = ['$http', '$routeParams'];
   AuthSVC.$inject = ['$http'];
   RegSVC.$inject = ['$http'];
-  // LookSVC.$inject = ['$http'];
+  LookSVC.$inject = ['$http'];
 
   function CategorySVC($http, $routeParams) {
     return {
@@ -142,6 +142,20 @@
       return {
         regUser: (user) => {
           return $http.post('/api/users', user)
+            .then((res) => {
+              return res.data;
+            })
+            .catch((err) => {
+              throw err;
+            });
+        }
+      };
+    }
+
+    function LookSVC($http) {
+      return {
+        getMyProducts: () => {
+          return $http.get('/api/products')
             .then((res) => {
               return res.data;
             })

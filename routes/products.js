@@ -7,6 +7,22 @@ const knex = require('../knex');
 const { camelizeKeys, decamelizeKeys } = require('humps');
 const { checkAuth } = require('../middleware');
 
+
+router.get('/api/products', checkAuth, (req, res, next) => {
+  knex('products')
+    .where('user_id', req.token.userId)
+    .orderBy('id')
+    .then((products) => {
+      console.log(products);
+      res.send(products);
+    })
+    .catch((err) => {
+      next(err);
+    });
+});
+
+
+
 router.post('/api/products', checkAuth, (req, res, next) => {
   const brand = req.body.brandedName;
   const image = req.body.image.sizes.Large.url;

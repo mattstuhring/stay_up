@@ -6,12 +6,12 @@
   app.controller('CategoryCTRL', CategoryCTRL);
   app.controller('AuthCtrl', AuthCtrl);
   app.controller('RegCtrl', RegCtrl);
-  // app.controller('LookCtrl', LookCtrl);
+  app.controller('LookCtrl', LookCtrl);
 
   CategoryCTRL.$inject = ['$scope', '$window', 'CategorySVC'];
   AuthCtrl.$inject = ['$location', '$cookies', 'AuthSVC'];
   RegCtrl.$inject = ['$http', '$location', 'RegSVC'];
-  // LookCtrl.$inject = ['$scope'];
+  LookCtrl.$inject = ['$scope', 'LookSVC'];
 
   function CategoryCTRL($scope, $window, CategorySVC) {
     this.firstList = [];
@@ -31,7 +31,7 @@
       console.log('CTRL p', p);
       CategorySVC.postProduct(p)
         .then((product) => {
-          this.myProducts.push(product);
+          console.log('success!', product);
         })
         .catch((err) => {
           throw err;
@@ -236,4 +236,22 @@
     };
   }
 
+
+
+  function LookCtrl($scope, LookSVC) {
+    this.myProducts;
+
+    const activate = () => {
+      LookSVC.getMyProducts()
+        .then((products) => {
+          console.log('final products', products);
+          this.myProducts = products;
+        })
+        .catch((err) => {
+          throw err;
+        });
+    };
+
+    activate();
+  }
 }());
