@@ -51,7 +51,7 @@ body {
 }
 
 .home-div {
-  padding-top: 50px;
+  padding-top: 60px;
 }
 
 .input-lg {
@@ -216,6 +216,8 @@ body {
 
 .border {
   background-color: khaki;
+  padding-right: 25px;
+  padding-left: 25px;
 }
 
 .btn-login {
@@ -264,7 +266,7 @@ body {
 }
 
 .page-header {
-  border-bottom: 2px solid lightgrey;
+  border-bottom: 1px solid #333;
 }
 
 .anchor {

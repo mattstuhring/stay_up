@@ -1,4 +1,86 @@
-<div ng-controller="CategoryCTRL as cat">
+<div>
+
+  <!-- Top Nav Bar -->
+  <header class="home-div">
+    <nav class="navbar navbar-default navbar-fixed-top first-nav" role="navigation">
+      <div class="container">
+
+
+        <!-- LOGO -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" ng-click="isNavCollapsed = !isNavCollapsed">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#/" ng-click=""><img class="img-responsive" src="images/stayup.png" alt="" /></a>
+        </div>
+
+
+        <!-- COLLAPSE WRAPPER -->
+        <div class="collapse navbar-collapse" uib-collapse="isNavCollapsed">
+
+
+          <!-- NAV FILTER BTN -->
+          <div class="btn-group navbar-btn navbar-right filter-btn" uib-dropdown is-open="false">
+            <button type="button" class="btn home-btn btn-default search-btn" uib-dropdown-toggle ng-disabled="disabled">
+              <span class="glyphicon glyphicon-filter" aria-hidden="true"></span>
+            </button>
+            <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+              <li role="menuitem">
+                <a href="" ng-click="cat.sortBy(null)">Popular</a>
+              </li>
+              <li role="menuitem">
+                <a href="" ng-click="cat.sortBy('-price')">$ High</a>
+              </li>
+              <li role="menuitem">
+                <a href="" ng-click="cat.sortBy('price')">$ Low</a>
+              </li>
+            </ul>
+          </div>
+
+
+          <div ng-controller="AuthCtrl as auth">
+            <div class="navbar-btn navbar-right user-btn user-hover">
+              <a ng-href="#/login" ng-if="!auth.isLoggedIn()">
+                <span class="fa fa-user login-btn"></span>
+              </a>
+
+              <a href="" ng-if="auth.isLoggedIn()" ng-click="auth.logout()">
+                <span class="fa fa-user-o logout-btn"></span>
+                <span>{{ auth.l }} help</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- <div class="navbar-btn navbar-right">
+            <a class="btn btn-default user-btn" href="#/login" role="button">
+              <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+            </a>
+          </div> -->
+
+          <!-- NAV SEARCH BTN -->
+          <div class="navbar-btn navbar-right">
+            <button type="submit" class="btn home-btn btn-default" ng-click="searchIconClick = !searchIconClick">
+              <span class="glyphicon" ng-class="{'glyphicon-search': !searchIconClick, 'glyphicon-remove': searchIconClick}" aria-hidden="true"></span>
+            </button>
+          </div>
+
+          <!-- HIDDEN NAV SEARCH INPUT -->
+          <form class="navbar-form navbar-right" ng-show="searchIconClick" role="search">
+            <button type="submit" class="btn btn-default home-btn hidden-btn" ng-click="cat.search(cat.keyword)">
+              <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+            </button>
+            <div class="form-group form-div">
+              <input type="text" class="form-control nav-input input-lg" placeholder="Search..." ng-model="cat.keyword">
+            </div>
+          </form>
+        </div>
+      </div>
+    </nav>
+  </header>
+
 
   <!-- CATEGORY BUTTONS -->
   <nav class="navbar navbar-default navbar-fixed-top second-nav">
@@ -23,7 +105,6 @@
       </div>
     </div>
   </nav>
-
 
 
 

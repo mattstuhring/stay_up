@@ -11,9 +11,8 @@ const { checkAuth } = require('../middleware');
 router.get('/api/products', checkAuth, (req, res, next) => {
   knex('products')
     .where('user_id', req.token.userId)
-    .orderBy('id')
+    .orderBy('id', 'desc')
     .then((products) => {
-      console.log(products);
       res.send(products);
     })
     .catch((err) => {
@@ -39,6 +38,31 @@ router.post('/api/products', checkAuth, (req, res, next) => {
 
       res.status(200)
         .send(post);
+    })
+    .catch((err) => {
+      next(err);
+    });
+});
+
+
+
+router.delete('/api/products/:id', checkAuth, (req, res, next) => {
+  const userId = req.token.userId;
+  const productId = req.params.id;
+  console.log('userId', userId);
+  console.log('productId', productId);
+
+  knex('products')
+    .where('id', productId)
+    .first()
+    .then((p) => {
+      return knex('products')
+        .del()
+        .where('id', productId)
+        .then(() => {
+          delete p.id;
+          res.send(p);
+        });
     })
     .catch((err) => {
       next(err);

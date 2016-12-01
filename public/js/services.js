@@ -120,7 +120,7 @@
         login: (username, password) => {
           return $http.post('/api/token', { username, password })
             .then((res) => {
-              return res.data;
+              return res.config.data.username;
             })
             .catch((err) => {
               throw err;
@@ -154,8 +154,18 @@
 
     function LookSVC($http) {
       return {
-        getMyProducts: () => {
+        getMyProducts: (id) => {
           return $http.get('/api/products')
+            .then((res) => {
+              return res.data;
+            })
+            .catch((err) => {
+              throw err;
+            });
+        },
+        removeMyProduct: (id) => {
+          console.log('svc', id);
+          return $http.delete(`/api/products/${id}`)
             .then((res) => {
               return res.data;
             })

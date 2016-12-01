@@ -13,6 +13,11 @@
   RegCtrl.$inject = ['$http', '$location', 'RegSVC'];
   LookCtrl.$inject = ['$scope', 'LookSVC'];
 
+
+
+
+// CATEGORY CONTROLLER
+
   function CategoryCTRL($scope, $window, CategorySVC) {
     this.firstList = [];
     this.secondList = [];
@@ -28,7 +33,6 @@
     $scope.isNavCollapsed = true;
 
     this.addProduct = (p) => {
-      console.log('CTRL p', p);
       CategorySVC.postProduct(p)
         .then((product) => {
           console.log('success!', product);
@@ -40,6 +44,7 @@
 
 
     this.sortBy = (prop) => {
+      console.log(prop);
       this.orderProp = prop;
     };
 
@@ -124,7 +129,7 @@
     };
 
 
-
+    // CAROUSEL FUNC
     $scope.myInterval = 5000;
     $scope.noWrapSlides = false;
     $scope.active = 0;
@@ -182,6 +187,12 @@
 
 
 
+
+
+
+
+// AUTHORIZATION CONTROLLER
+
   function AuthCtrl($location, $cookies, AuthSVC) {
     this.username = '';
     this.password = '';
@@ -193,6 +204,8 @@
     this.login = () => {
       AuthSVC.login(this.username, this.password)
         .then((user) => {
+          this.l = user;
+          console.log(this.l);
           $location.path('/');
         })
         .catch((err) => {
@@ -210,6 +223,10 @@
   }
 
 
+
+
+
+// REGISTRATION CONTROLLER
 
   function RegCtrl($http, $location, RegSVC) {
     this.showReg = '';
@@ -238,13 +255,18 @@
 
 
 
+
+
+// MY LOOK CONTROLLER
+
   function LookCtrl($scope, LookSVC) {
+    this.orderProp = '';
     this.myProducts;
 
     const activate = () => {
       LookSVC.getMyProducts()
         .then((products) => {
-          console.log('final products', products);
+          console.log(products);
           this.myProducts = products;
         })
         .catch((err) => {
@@ -253,5 +275,27 @@
     };
 
     activate();
+
+    this.removeProduct = (id) => {
+      LookSVC.removeMyProduct(id)
+        .then((res) => {
+          LookSVC.getMyProducts()
+            .then((products) => {
+              this.myProducts = products
+            })
+            .catch((err) => {
+              throw err;
+            });
+        })
+        .catch((err) => {
+          throw err;
+        });
+    };
+
+    // this.sortBy = (prop) => {
+    //
+    //   console.log('prop', prop);
+    //   this.orderProp = prop;
+    // };
   }
 }());
