@@ -20,6 +20,7 @@
   "homepage": "https://github.com/mattstuhring/stay_up#readme",
   "dependencies": {
     "angular-ui-bootstrap": "^2.2.0",
+    "angular-ui-notification": "^0.2.0",
     "bcrypt-as-promised": "^1.1.0",
     "body-parser": "^1.15.2",
     "boom": "^4.2.0",

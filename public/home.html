@@ -1,4 +1,4 @@
-<div>
+<div ng-controller="AuthCtrl as auth">
 
   <!-- Top Nav Bar -->
   <header class="home-div">
@@ -41,17 +41,15 @@
           </div>
 
 
-          <div ng-controller="AuthCtrl as auth">
-            <div class="navbar-btn navbar-right user-btn user-hover">
-              <a ng-href="#/login" ng-if="!auth.isLoggedIn()">
-                <span class="fa fa-user login-btn"></span>
-              </a>
+          <div class="navbar-btn navbar-right user-btn user-hover">
+            <a ng-href="#/login" ng-if="!auth.isLoggedIn()">
+              <span class="fa fa-user login-btn"></span>
+            </a>
 
-              <a href="" ng-if="auth.isLoggedIn()" ng-click="auth.logout()">
-                <span class="fa fa-user-o logout-btn"></span>
-                <span>{{ auth.l }} help</span>
-              </a>
-            </div>
+            <a href="" ng-if="auth.isLoggedIn()" ng-click="auth.logout()">
+              <span class="fa fa-user-o logout-btn"></span>
+              <a href="#/mylook" ng-if="auth.isLoggedIn()" class="my-look">My Look</a>
+            </a>
           </div>
 
           <!-- <div class="navbar-btn navbar-right">
@@ -137,6 +135,9 @@
           <div class="col-xs-12 col-sm-4 col-md-4" ng-repeat="p in cat.productsList | orderBy: cat.orderProp">
             <div class="thumbnail thumb">
               <div class="thumbnail-box">
+                <a href="" ng-click="cat.addProduct(p)" ng-if="auth.isLoggedIn()" role="button">
+                  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                </a>
                 <img class="thumb-img center-block img-responsive" src="{{ p.image.sizes.Large.url }}" alt="...">
               </div>
               <div class="caption">
@@ -144,7 +145,6 @@
                 <h3 class="text-center price">
                   <em>{{ p.priceLabel }}</em>
                 </h3>
-                <p><a href="" ng-click="cat.addProduct(p)" class="btn btn-default" role="button">Collect</a></p>
               </div>
             </div>
           </div>

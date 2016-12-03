@@ -39,10 +39,38 @@ body {
   display: inline-block;
 }
 
-.glyphicon {
+.glyphicon-filter, .glyphicon-search, .glyphicon-remove {
   font-size: 20px;
   position: relative;
   top: 5px;
+}
+
+.glyphicon-minus {
+  position: absolute !important;
+  left: 20px;
+  top: 20px;
+  color: #333;
+  color: khaki;
+  font-size: 20px;
+  padding: 5px;
+}
+
+.glyphicon-minus:hover {
+  color: indianred;
+}
+
+.glyphicon-plus {
+  position: absolute !important;
+  left: 20px;
+  top: 20px;
+  color: #333;
+  color: khaki;
+  font-size: 20px;
+  padding: 5px;
+}
+
+.glyphicon-plus:hover {
+  color: darkseagreen;
 }
 
 .home-btn {
@@ -74,6 +102,10 @@ body {
   color: #AA0000;
   padding-right: 12px;
   padding-left: 12px;
+}
+
+.my-look {
+  padding-right: 5px;
 }
 
 .navbar {
@@ -175,6 +207,7 @@ body {
 .thumb {
   border: none;
   padding: 0px;
+  position: relative;
 }
 
 .thumb .caption {

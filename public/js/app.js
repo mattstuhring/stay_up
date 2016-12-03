@@ -1,6 +1,6 @@
 (function() {
   'use strict';
 
-  angular.module('stayup', ['ngCookies', 'ngRoute', 'ui.bootstrap']);
+  angular.module('stayup', ['ngCookies', 'ngRoute', 'ui.bootstrap', 'ui-notification']);
 
 }());

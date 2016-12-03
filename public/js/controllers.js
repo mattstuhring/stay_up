@@ -7,11 +7,13 @@
   app.controller('AuthCtrl', AuthCtrl);
   app.controller('RegCtrl', RegCtrl);
   app.controller('LookCtrl', LookCtrl);
+  app.controller('NotificationCtrl', NotificationCtrl)
 
   CategoryCTRL.$inject = ['$scope', '$window', 'CategorySVC'];
   AuthCtrl.$inject = ['$location', '$cookies', 'AuthSVC'];
   RegCtrl.$inject = ['$http', '$location', 'RegSVC'];
   LookCtrl.$inject = ['$scope', 'LookSVC'];
+  NotificationCtrl.$inject = ['$scope', 'Notification']
 
 
 
@@ -297,5 +299,16 @@
     //   console.log('prop', prop);
     //   this.orderProp = prop;
     // };
+  }
+
+
+
+
+
+  // NOTIFICATIONS
+  function NotificationCtrl($scope, Notification) {
+    $scope.error = () => {
+        Notification.error('Error notification');
+    };
   }
 }());
