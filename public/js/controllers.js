@@ -7,20 +7,18 @@
   app.controller('AuthCtrl', AuthCtrl);
   app.controller('RegCtrl', RegCtrl);
   app.controller('LookCtrl', LookCtrl);
-  app.controller('NotificationCtrl', NotificationCtrl)
 
-  CategoryCTRL.$inject = ['$scope', '$window', 'CategorySVC'];
+  CategoryCTRL.$inject = ['$scope', '$window', 'CategorySVC', 'Notification'];
   AuthCtrl.$inject = ['$location', '$cookies', 'AuthSVC'];
   RegCtrl.$inject = ['$http', '$location', 'RegSVC'];
-  LookCtrl.$inject = ['$scope', 'LookSVC'];
-  NotificationCtrl.$inject = ['$scope', 'Notification']
+  LookCtrl.$inject = ['$scope', 'LookSVC', 'Notification'];
 
 
 
 
 // CATEGORY CONTROLLER
 
-  function CategoryCTRL($scope, $window, CategorySVC) {
+  function CategoryCTRL($scope, $window, CategorySVC, Notification) {
     this.firstList = [];
     this.secondList = [];
     this.productsList = [];
@@ -34,16 +32,24 @@
 
     $scope.isNavCollapsed = true;
 
+    $scope.error = () => {
+        Notification.error('Error Notification');
+    };
+
+    $scope.added = () => {
+      Notification.success('Added to your collection.');
+    };
+
     this.addProduct = (p) => {
       CategorySVC.postProduct(p)
         .then((product) => {
+          $scope.added();
           console.log('success!', product);
         })
         .catch((err) => {
           throw err;
         });
     };
-
 
     this.sortBy = (prop) => {
       console.log(prop);
@@ -131,60 +137,30 @@
     };
 
 
+
+
+
+
     // CAROUSEL FUNC
     $scope.myInterval = 5000;
     $scope.noWrapSlides = false;
     $scope.active = 0;
-    var slides = $scope.slides = [];
-    var currIndex = 0;
+    const slides = $scope.slides = [];
+    let currIndex = 0;
+
 
     $scope.addSlide = function() {
-      var newWidth = 600 + slides.length + 1;
+      const newWidth = 600 + slides.length + 1;
       slides.push({
         image: `images/banner${currIndex}.png`,
         id: currIndex++
       });
     };
 
-    $scope.randomize = function() {
-      var indexes = generateIndexesArray();
-      assignNewIndexesToSlides(indexes);
-    };
-
-    for (var i = 0; i < 6; i++) {
+    for (let i = 0; i < 6; i++) {
       $scope.addSlide();
     }
 
-    // Randomize logic below
-    function assignNewIndexesToSlides(indexes) {
-      for (var i = 0, l = slides.length; i < l; i++) {
-        slides[i].id = indexes.pop();
-      }
-    }
-
-    function generateIndexesArray() {
-      var indexes = [];
-      for (var i = 0; i < currIndex; ++i) {
-        indexes[i] = i;
-      }
-      return shuffle(indexes);
-    }
-
-    // http://stackoverflow.com/questions/962802#962890
-    function shuffle(array) {
-      var tmp, current, top = array.length;
-
-      if (top) {
-        while (--top) {
-          current = Math.floor(Math.random() * (top + 1));
-          tmp = array[current];
-          array[current] = array[top];
-          array[top] = tmp;
-        }
-      }
-
-      return array;
-    }
   }
 
 
@@ -261,9 +237,13 @@
 
 // MY LOOK CONTROLLER
 
-  function LookCtrl($scope, LookSVC) {
+  function LookCtrl($scope, LookSVC, Notification) {
     this.orderProp = '';
     this.myProducts;
+
+    $scope.removed = () => {
+      Notification.success('Removed From your collection');
+    };
 
     const activate = () => {
       LookSVC.getMyProducts()
@@ -283,7 +263,8 @@
         .then((res) => {
           LookSVC.getMyProducts()
             .then((products) => {
-              this.myProducts = products
+              this.myProducts = products;
+              $scope.removed();
             })
             .catch((err) => {
               throw err;
@@ -301,14 +282,4 @@
     // };
   }
 
-
-
-
-
-  // NOTIFICATIONS
-  function NotificationCtrl($scope, Notification) {
-    $scope.error = () => {
-        Notification.error('Error notification');
-    };
-  }
 }());
