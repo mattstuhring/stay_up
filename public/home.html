@@ -46,10 +46,11 @@
               <span class="fa fa-user login-btn"></span>
             </a>
 
-            <a href="" ng-if="auth.isLoggedIn()" ng-click="auth.logout()">
+            <a href="" ng-if="auth.isLoggedIn()" ng-click="auth.logout()" class="logout-btn-a">
               <span class="fa fa-user-o logout-btn"></span>
-              <a href="#/mylook" ng-if="auth.isLoggedIn()" class="my-look">My Look</a>
             </a>
+
+            <a href="#/mylook" ng-if="auth.isLoggedIn()" class="my-look"> My Look</a>
           </div>
 
           <!-- <div class="navbar-btn navbar-right">
