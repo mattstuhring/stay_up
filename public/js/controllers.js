@@ -187,6 +187,7 @@
           $location.path('/');
         })
         .catch((err) => {
+          Notification.error({message: 'Incorrect username or password', delay: 3000});
           console.log(err);
         });
     };
