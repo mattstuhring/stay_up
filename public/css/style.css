@@ -33,6 +33,7 @@ body {
 
 .filter-btn {
   z-index: 2;
+  background-color: #d4f4d4;
 }
 
 .form-div {
@@ -111,7 +112,7 @@ body {
   text-decoration: none;
 }
 
-.my-look {
+.my-look-link {
   padding-right: 5px;
   padding-left: 5px;
   position: relative;
@@ -242,6 +243,7 @@ body {
   border: none;
   font-size: 20px;
   height: 54px;
+  /*background-color: #d4f4d4;*/
 }
 
 /*.user-btn:hover {
