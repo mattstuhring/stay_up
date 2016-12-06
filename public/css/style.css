@@ -39,7 +39,7 @@ body {
   display: inline-block;
 }
 
-.glyphicon-filter, .glyphicon-search, .glyphicon-remove {
+.glyphicon-filter, .glyphicon-search, .glyphicon-remove, .glyphicon-ok {
   font-size: 20px;
   position: relative;
   top: 5px;
@@ -88,11 +88,15 @@ body {
 
 .login-btn {
   font-size: 25px !important;
-  position: relative;
-  top: 2px;
   color: #333;
-  padding-right: 12px;
-  padding-left: 12px;
+  padding-right: 14px;
+  padding-left: 14px;
+  padding-top: 15px;
+  height: 54px;
+}
+
+.login-btn:hover {
+  background-color: #e6e6e6;
 }
 
 .logout-btn {
@@ -100,16 +104,17 @@ body {
   position: relative;
   top: 2px;
   color: #AA0000;
-  padding-right: 12px;
-  padding-left: 12px;
 }
 
-.logout-btn-a {
-  tex
+.logout-btn-a:hover {
+  text-decoration: none;
 }
 
 .my-look {
   padding-right: 5px;
+  padding-left: 5px;
+  position: relative;
+  top: 14px;
 }
 
 .navbar {
@@ -235,14 +240,13 @@ body {
 .user-btn {
   border: none;
   font-size: 20px;
-  padding-bottom: 12px;
-  padding-top: 13px;
+  height: 54px;
   background-color: #d4f4d4;
 }
 
-.user-btn:hover {
+/*.user-btn:hover {
   background-color: #e6e6e6;
-}
+}*/
 
 
 

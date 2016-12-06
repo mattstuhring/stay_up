@@ -9,7 +9,7 @@
   app.controller('LookCtrl', LookCtrl);
 
   CategoryCTRL.$inject = ['$scope', '$window', 'CategorySVC', 'Notification'];
-  AuthCtrl.$inject = ['$location', '$cookies', 'AuthSVC'];
+  AuthCtrl.$inject = ['$location', '$cookies', 'AuthSVC', 'Notification'];
   RegCtrl.$inject = ['$http', '$location', 'RegSVC'];
   LookCtrl.$inject = ['$scope', 'LookSVC', 'Notification'];
 
@@ -37,7 +37,7 @@
     };
 
     $scope.added = () => {
-      Notification.success('Added to your collection.');
+      Notification.success({message: 'Added to your collection', delay: 3000});
     };
 
     this.addProduct = (p) => {
@@ -171,7 +171,7 @@
 
 // AUTHORIZATION CONTROLLER
 
-  function AuthCtrl($location, $cookies, AuthSVC) {
+  function AuthCtrl($location, $cookies, AuthSVC, Notification) {
     this.username = '';
     this.password = '';
 
@@ -193,6 +193,7 @@
 
     this.logout = () => {
       AuthSVC.logout();
+      Notification.success({message: 'You are now logged out', delay: 3000});
     };
 
     this.home = () => {
@@ -213,7 +214,6 @@
     this.addUser = (isValid) => {
 
       if (isValid) {
-        alert('our form is valid!');
 
         RegSVC.regUser(this.regForm)
           .then((user) => {
@@ -242,7 +242,7 @@
     this.myProducts;
 
     $scope.removed = () => {
-      Notification.success('Removed From your collection');
+      Notification.success({message: 'Removed From your collection', delay: 3000});
     };
 
     const activate = () => {

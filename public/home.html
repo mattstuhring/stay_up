@@ -24,7 +24,7 @@
 
           <!-- NAV FILTER BTN -->
           <div class="btn-group navbar-btn navbar-right filter-btn" uib-dropdown is-open="false">
-            <button type="button" class="btn home-btn btn-default search-btn" uib-dropdown-toggle ng-disabled="disabled">
+            <button type="button" class="btn home-btn btn-default" uib-dropdown-toggle ng-disabled="disabled">
               <span class="glyphicon glyphicon-filter" aria-hidden="true"></span>
             </button>
             <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
@@ -41,23 +41,58 @@
           </div>
 
 
-          <div class="navbar-btn navbar-right user-btn user-hover">
-            <a ng-href="#/login" ng-if="!auth.isLoggedIn()">
-              <span class="fa fa-user login-btn"></span>
-            </a>
 
-            <a href="" ng-if="auth.isLoggedIn()" ng-click="auth.logout()" class="logout-btn-a">
+
+
+
+
+          <div class="navbar-btn navbar-right">
+            <div class="user-btn">
+
+              <a ng-href="#/login" ng-if="!auth.isLoggedIn()">
+                <span class="fa fa-user login-btn"></span>
+              </a>
+
+            <!-- <a href="" ng-if="auth.isLoggedIn()" ng-click="auth.logout()" class="logout-btn-a">
               <span class="fa fa-user-o logout-btn"></span>
             </a>
 
-            <a href="#/mylook" ng-if="auth.isLoggedIn()" class="my-look"> My Look</a>
+            <a href="#/mylook" ng-if="auth.isLoggedIn()" class="my-look">My Look</a> -->
+
+
+
+
+
+
+
+
+            <div ng-if="auth.isLoggedIn()" class="btn-group navbar-btn navbar-right filter-btn" uib-dropdown is-open="false">
+              <button type="button" class="btn home-btn btn-default user-btn" uib-dropdown-toggle ng-disabled="disabled">
+                <span class="fa fa-user-o logout-btn" aria-hidden="true"></span>
+              </button>
+              <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+                <li role="menuitem">
+                  <a href="" ng-click="auth.logout()">Logout</a>
+                </li>
+              </ul>
+              <a href="#/mylook" ng-if="auth.isLoggedIn()" class="my-look user-btn">My Look</a>
+            </div>
           </div>
 
-          <!-- <div class="navbar-btn navbar-right">
-            <a class="btn btn-default user-btn" href="#/login" role="button">
-              <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-            </a>
-          </div> -->
+
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+
 
           <!-- NAV SEARCH BTN -->
           <div class="navbar-btn navbar-right">
