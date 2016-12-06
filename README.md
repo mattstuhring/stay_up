@@ -3,10 +3,10 @@
 ## Stay Up on men's fashion!
 
 ### User is not logged in:
-<img src="http://i.giphy.com/l0MYuYNtZ9aKQwZr2.gif" height="500">
+<img src="http://i.giphy.com/l0MYuYNtZ9aKQwZr2.gif">
 
 ### Logged in users example profile page:
-<img src="http://i.giphy.com/l0HlVAlAqSmF8mGOc.gif" height="500">
+<img src="http://i.giphy.com/l0MYuYNtZ9aKQwZr2.gif">
 
 
 ##What problem does Stay Up solve?
