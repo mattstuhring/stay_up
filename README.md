@@ -6,7 +6,7 @@
 <img src="http://i.giphy.com/l0MYuYNtZ9aKQwZr2.gif">
 
 ### Logged in users example profile page:
-<img src="http://i.giphy.com/l0MYuYNtZ9aKQwZr2.gif">
+<img src="http://i.giphy.com/l0HlVAlAqSmF8mGOc.gif">
 
 
 ##What problem does Stay Up solve?
