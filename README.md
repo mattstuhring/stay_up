@@ -1,5 +1,22 @@
 # AngularJS Project
 
-## Stay Up on fashion!
+## Stay Up on men's fashion!
 
-### Built with AngularJS, Node, Express, PostgreSQL
+### User is not logged in:
+<img src="http://giphy.com/gifs/l0MYuYNtZ9aKQwZr2/html5" height="500">
+
+### Logged in users example profile page:
+<img src="http://giphy.com/gifs/l0HlVAlAqSmF8mGOc/html5" height="500">
+
+
+##What problem does Stay Up solve?
+A web app that helps you keep track of your favorite men's fashion products.
+
+##How does your project solve this problem?
+It allows users to choose products from the ShopStyle API, and save it to their user account.
+
+##What web APIs did it use?
+ShopStyle API.
+
+##What technologies did it use?
+Built with AngularJS, Express, Node, PostgreSQL, JavaScript, Bootstrap UI, HTML/CSS, ShopStyle API

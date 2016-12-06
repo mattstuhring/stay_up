@@ -14,8 +14,6 @@
   LookCtrl.$inject = ['$scope', 'LookSVC', 'Notification'];
 
 
-
-
 // CATEGORY CONTROLLER
 
   function CategoryCTRL($scope, $window, CategorySVC, Notification) {
@@ -60,6 +58,7 @@
       CategorySVC.getKeywordSearch(key)
         .then((res) => {
           this.productsList = res;
+          this.headerName = this.keyword;
           this.keyword = '';
         })
         .catch((err) => {

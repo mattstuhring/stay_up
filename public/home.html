@@ -49,11 +49,12 @@
           <div class="navbar-btn navbar-right">
             <div class="user-btn">
 
+              <!-- LOGIN -->
               <a ng-href="#/login" ng-if="!auth.isLoggedIn()">
                 <span class="fa fa-user login-btn"></span>
               </a>
 
-
+              <!-- LOGOUT and MY LOOK -->
               <div ng-if="auth.isLoggedIn()" class="btn-group navbar-btn navbar-right filter-btn" uib-dropdown is-open="false">
                 <button type="button" class="btn home-btn btn-default user-btn" uib-dropdown-toggle ng-disabled="disabled">
                   <span class="fa fa-user-o logout-btn" aria-hidden="true"></span>
@@ -67,8 +68,6 @@
               </div>
             </div>
           </div>
-
-
 
           <!-- NAV SEARCH BTN -->
           <div class="navbar-btn navbar-right">
