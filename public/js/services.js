@@ -39,7 +39,6 @@
             return $http.get(`https://api.shopstyle.com/api/v2/products?pid=uid4641-36786129-92&cat=${category}&offset=0&limit=48`)
               .then((res) => {
                 p.list = res.data.products;
-                // console.log('final p', p);
                 return p;
               })
               .catch((err) => {

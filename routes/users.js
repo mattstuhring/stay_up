@@ -45,6 +45,4 @@ router.post('/api/users', ev(validations.post), (req, res, next) => {
 });
 
 
-
-
 module.exports = router;

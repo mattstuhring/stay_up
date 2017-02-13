@@ -137,9 +137,6 @@
 
 
 
-
-
-
     // CAROUSEL FUNC
     $scope.myInterval = 5000;
     $scope.noWrapSlides = false;
@@ -161,9 +158,6 @@
     }
 
   }
-
-
-
 
 
 
